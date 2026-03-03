@@ -4,8 +4,13 @@ COPY . .
 RUN mvn clean package -DskipTests
 
 FROM tomcat:10.1-jdk17
+
+# Remove default apps
 RUN rm -rf /usr/local/tomcat/webapps/*
+
+# 🔥 Make Tomcat use Railway's PORT
+RUN sed -i 's/port="8080"/port="${PORT}"/' /usr/local/tomcat/conf/server.xml
+
 COPY --from=build /app/target/MayViet.war /usr/local/tomcat/webapps/ROOT.war
 
-EXPOSE 8080
 CMD ["catalina.sh", "run"]
