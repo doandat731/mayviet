@@ -8,6 +8,39 @@
         <title>Sản phẩm - MayViet Shop</title>
 
         <style>
+
+        /* ===== POPUP ===== */
+        .popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .popup-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .popup-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
             * {
                 margin: 0;
                 padding: 0;
@@ -324,5 +357,27 @@
             </div>
             <jsp:include page="/WEB-INF/footer.jsp" />
         </div>
+
+        <!-- ===== POPUP CẢM ƠN ===== -->
+        <div id="welcomePopup" class="popup-overlay">
+            <div class="popup-content">
+                <img src="${pageContext.request.contextPath}/images/loichao.png"
+                     alt="Lời cảm ơn"
+                     class="popup-image">
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const popup = document.getElementById("welcomePopup");
+
+                // Click ra ngoài để đóng
+                popup.addEventListener("click", function (e) {
+                    if (e.target === popup) {
+                        popup.style.display = "none";
+                    }
+                });
+            });
+        </script>
     </body>
 </html>
