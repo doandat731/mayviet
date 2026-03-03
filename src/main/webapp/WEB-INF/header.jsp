@@ -98,12 +98,4 @@
     <a href="${pageContext.request.contextPath}/products" class="logo">
          Mây Việt
     </a>
-
-    <nav class="nav">
-        <a href="${pageContext.request.contextPath}/products">Sản phẩm</a>
-        <a href="#">Giới thiệu</a>
-        <a href="#">Bộ sưu tập</a>
-        <a href="#">Tin tức</a>
-        <a href="#">Liên hệ</a>
-    </nav>
 </header>
